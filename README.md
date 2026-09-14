@@ -38,7 +38,7 @@ This repository is not ready for the [Community Template Gallery](https://develo
 - [ ] Add a brand thumbnail to the `brand` block in `___INFO___`.
 - [ ] Write test scenarios in `___TESTS___`, which is currently empty.
 - [ ] Test against a real server container and a real PostHog project.
-- [ ] Replace the placeholder `sha` in `metadata.yaml` with the commit SHA to publish.
+- [x] Pin `metadata.yaml` to the commit SHA of the `template.tpl` to publish. Update it whenever `template.tpl` changes.
 - [ ] Accept the gallery Developer Terms of Service in the template editor's **Info** tab.
 - [ ] Make this repository public with Issues enabled, then submit at [tagmanager.google.com/gallery](https://tagmanager.google.com/gallery).
 
