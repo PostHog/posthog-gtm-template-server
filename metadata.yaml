@@ -1,0 +1,8 @@
+homepage: https://posthog.com
+documentation: https://posthog.com/docs/libraries/google-tag-manager
+versions:
+  # Replace the placeholder with the commit SHA of the template.tpl you want published.
+  # The gallery reads this file to decide which revision to serve.
+  - sha: "REPLACE_WITH_COMMIT_SHA"
+    changeNotes: |
+      Initial release. Forwards server container events to the PostHog capture API.
