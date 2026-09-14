@@ -308,6 +308,7 @@ scenarios:
 - name: Sends the event to the US host
   code: |-
     const JSON = require('JSON');
+    const Promise = require('Promise');
 
     const mockData = {
       projectToken: 'phc_test',
@@ -321,7 +322,9 @@ scenarios:
     let request;
     mock('sendHttpRequest', function(url, options, body) {
       request = {url: url, options: options, body: JSON.parse(body)};
-      return Promise.resolve({statusCode: 200, body: '{"status":1}'});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 200, body: '{"status":1}'});
+      });
     });
 
     runCode(mockData);
@@ -335,6 +338,8 @@ scenarios:
 
 - name: Sends the event to the EU host
   code: |-
+    const Promise = require('Promise');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'eu',
@@ -347,7 +352,9 @@ scenarios:
     let url;
     mock('sendHttpRequest', function(u, options, body) {
       url = u;
-      return Promise.resolve({statusCode: 200, body: ''});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 200, body: ''});
+      });
     });
 
     runCode(mockData);
@@ -358,6 +365,7 @@ scenarios:
 - name: Falls back to the incoming event name and client id
   code: |-
     const JSON = require('JSON');
+    const Promise = require('Promise');
 
     const mockData = {
       projectToken: 'phc_test',
@@ -375,7 +383,9 @@ scenarios:
     let body;
     mock('sendHttpRequest', function(url, options, b) {
       body = JSON.parse(b);
-      return Promise.resolve({statusCode: 200, body: ''});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 200, body: ''});
+      });
     });
 
     runCode(mockData);
@@ -387,6 +397,7 @@ scenarios:
 - name: Prefers user id over client id
   code: |-
     const JSON = require('JSON');
+    const Promise = require('Promise');
 
     const mockData = {
       projectToken: 'phc_test',
@@ -405,7 +416,9 @@ scenarios:
     let body;
     mock('sendHttpRequest', function(url, options, b) {
       body = JSON.parse(b);
-      return Promise.resolve({statusCode: 200, body: ''});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 200, body: ''});
+      });
     });
 
     runCode(mockData);
@@ -415,6 +428,7 @@ scenarios:
 - name: Includes all incoming event data as properties
   code: |-
     const JSON = require('JSON');
+    const Promise = require('Promise');
 
     const mockData = {
       projectToken: 'phc_test',
@@ -432,7 +446,9 @@ scenarios:
     let body;
     mock('sendHttpRequest', function(url, options, b) {
       body = JSON.parse(b);
-      return Promise.resolve({statusCode: 200, body: ''});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 200, body: ''});
+      });
     });
 
     runCode(mockData);
@@ -443,6 +459,7 @@ scenarios:
 - name: Additional properties override the incoming event data
   code: |-
     const JSON = require('JSON');
+    const Promise = require('Promise');
 
     const mockData = {
       projectToken: 'phc_test',
@@ -461,7 +478,9 @@ scenarios:
     let body;
     mock('sendHttpRequest', function(url, options, b) {
       body = JSON.parse(b);
-      return Promise.resolve({statusCode: 200, body: ''});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 200, body: ''});
+      });
     });
 
     runCode(mockData);
@@ -471,6 +490,7 @@ scenarios:
 - name: Anonymous events set process person profile to false
   code: |-
     const JSON = require('JSON');
+    const Promise = require('Promise');
 
     const mockData = {
       projectToken: 'phc_test',
@@ -484,7 +504,9 @@ scenarios:
     let body;
     mock('sendHttpRequest', function(url, options, b) {
       body = JSON.parse(b);
-      return Promise.resolve({statusCode: 200, body: ''});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 200, body: ''});
+      });
     });
 
     runCode(mockData);
@@ -531,6 +553,8 @@ scenarios:
 
 - name: Fails on a non 2xx response
   code: |-
+    const Promise = require('Promise');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'us',
@@ -541,7 +565,9 @@ scenarios:
     };
 
     mock('sendHttpRequest', function(url, options, body) {
-      return Promise.resolve({statusCode: 401, body: 'unauthorized'});
+      return Promise.create(function(resolve) {
+        resolve({statusCode: 401, body: 'unauthorized'});
+      });
     });
 
     runCode(mockData);
