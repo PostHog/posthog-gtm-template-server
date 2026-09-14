@@ -1,6 +1,6 @@
 homepage: https://posthog.com
 documentation: https://posthog.com/docs/libraries/google-tag-manager
 versions:
-  - sha: "e1d0bba1dfdfed44552d2ac2191ca1b8ef3e9645"
+  - sha: "f56976ef56f01696abb52b0fb7c92f4e33ed660c"
     changeNotes: |
       Initial release. Forwards server container events to the PostHog capture API.
