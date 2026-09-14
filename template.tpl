@@ -187,7 +187,7 @@ for (let i = 0; i < extraKeys.length; i++) {
 }
 
 if (!data.processPersonProfile) {
-  properties.$process_person_profile = false;
+  properties['$process_person_profile'] = false;
 }
 
 const url = API_HOSTS[data.region] + '/i/v0/e/';
@@ -477,7 +477,7 @@ scenarios:
 
     runCode(mockData);
 
-    assertThat(body.properties.$process_person_profile).isEqualTo(false);
+    assertThat(body.properties['$process_person_profile']).isEqualTo(false);
 
 - name: Fails when there is no distinct id
   code: |-
