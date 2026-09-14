@@ -1,12 +1,14 @@
 # PostHog template for Google Tag Manager (server-side)
 
-A Google Tag Manager **server container** custom template that forwards events to the [PostHog capture API](https://posthog.com/docs/api/capture).
+A Google Tag Manager **server container** custom template that sends events to the [PostHog capture API](https://posthog.com/docs/api/capture).
 
-> **Status: not published.** This template has not been submitted to the Community Template Gallery and has not been tested in a real container. See [Before submitting](#before-submitting).
+## Install
+
+In your server container, go to **Templates > Tag Templates > Search Gallery** and search for PostHog.
 
 ## What it does
 
-Takes the event that reached your server container and POSTs it to `/i/v0/e/` on PostHog Cloud.
+Takes the event that reached your server container and posts it to `/i/v0/e/` on PostHog Cloud.
 
 | Field | Default |
 | --- | --- |
@@ -14,13 +16,15 @@ Takes the event that reached your server container and POSTs it to `/i/v0/e/` on
 | Distinct ID | `user_id`, falling back to `client_id` |
 | Properties | Every key of the incoming event, plus anything you add in the tag |
 
-Turn off **Create or update a person profile** to send the event as [anonymous](https://posthog.com/docs/data/anonymous-vs-identified-events). That sets `$process_person_profile: false`, which affects billing.
+Turn off **Create or update a person profile** to send the event as [anonymous](https://posthog.com/docs/data/anonymous-vs-identified-events). This sets `$process_person_profile` to `false`, which affects billing.
 
 ## Setup
 
-1. Add the template to your **server** container.
-2. Create a tag, set your project API key and region, and trigger it on the client events you want in PostHog.
-3. Use Preview mode to check the response. Turn on **Log requests and responses** while testing, and turn it off before publishing.
+1. Create a tag and set your project API key and region.
+2. Trigger it on the client events you want in PostHog.
+3. Check the response in Preview mode. Turn on **Log requests and responses** while you test, and turn it off before you publish.
+
+Find your project API key in [your project settings](https://us.posthog.com/settings/project). It starts with `phc_`.
 
 ## Timestamps
 
@@ -30,19 +34,10 @@ The tag does not send a `timestamp`, so PostHog uses the time it receives the ev
 
 Not supported. Google requires request URLs to be declared in the template, so only the US and EU Cloud hosts are allowed.
 
-## Before submitting
+## Contributing
 
-This repository is not ready for the [Community Template Gallery](https://developers.google.com/tag-platform/tag-manager/templates/gallery). Outstanding work:
-
-- [ ] Import `template.tpl` into the GTM template editor and confirm it loads without validation errors.
-- [x] Add a brand thumbnail to the `brand` block in `___INFO___`.
-- [x] Write test scenarios in `___TESTS___`. They have not been run yet, so confirm they pass in the template editor.
-- [ ] Test against a real server container and a real PostHog project.
-- [x] Pin `metadata.yaml` to the commit SHA of the `template.tpl` to publish. Update it whenever `template.tpl` changes.
-- [ ] Accept the gallery Developer Terms of Service in the template editor's **Info** tab.
-- [x] Make this repository public with Issues enabled.
-- [ ] Submit at [tagmanager.google.com/gallery](https://tagmanager.google.com/gallery).
+Open an issue or a pull request. If you change `template.tpl`, add a new entry at the top of the `versions` list in `metadata.yaml` with the new commit SHA and a change note. The gallery serves the revision that `metadata.yaml` names.
 
 ## License
 
-Apache 2.0. Required by Google for gallery templates, and not the license PostHog uses elsewhere.
+Apache 2.0, as required for Google Tag Manager gallery templates.
