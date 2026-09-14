@@ -145,6 +145,7 @@ ___TEMPLATE_PARAMETERS___
 ___SANDBOXED_JS_FOR_SERVER___
 
 const JSON = require('JSON');
+const Object = require('Object');
 const getAllEventData = require('getAllEventData');
 const getEventData = require('getEventData');
 const logToConsole = require('logToConsole');
@@ -180,8 +181,9 @@ if (!distinctId) {
 const properties = data.includeAllEventData ? getAllEventData() : {};
 
 const extras = makeTableMap(data.extraProperties || [], 'key', 'value') || {};
-for (const key in extras) {
-  properties[key] = extras[key];
+const extraKeys = Object.keys(extras);
+for (let i = 0; i < extraKeys.length; i++) {
+  properties[extraKeys[i]] = extras[extraKeys[i]];
 }
 
 if (!data.processPersonProfile) {
