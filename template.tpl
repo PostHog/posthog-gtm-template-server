@@ -307,6 +307,8 @@ ___TESTS___
 scenarios:
 - name: Sends the event to the US host
   code: |-
+    const JSON = require('JSON');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'us',
@@ -355,6 +357,8 @@ scenarios:
 
 - name: Falls back to the incoming event name and client id
   code: |-
+    const JSON = require('JSON');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'us',
@@ -382,6 +386,8 @@ scenarios:
 
 - name: Prefers user id over client id
   code: |-
+    const JSON = require('JSON');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'us',
@@ -408,6 +414,8 @@ scenarios:
 
 - name: Includes all incoming event data as properties
   code: |-
+    const JSON = require('JSON');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'us',
@@ -434,6 +442,8 @@ scenarios:
 
 - name: Additional properties override the incoming event data
   code: |-
+    const JSON = require('JSON');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'us',
@@ -460,6 +470,8 @@ scenarios:
 
 - name: Anonymous events set process person profile to false
   code: |-
+    const JSON = require('JSON');
+
     const mockData = {
       projectToken: 'phc_test',
       region: 'us',
